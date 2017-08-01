@@ -11,8 +11,8 @@ MongoClient.connect(url, function(err, db){
   if(db){
     var collection = db.collection('testCollection');
     var testObj = {
-      name: 'test',
-      url: 'test2',
+      name: 'test3',
+      url: 'test4',
     }
     collection.insert(testObj, function(err, data){
       if(err){
