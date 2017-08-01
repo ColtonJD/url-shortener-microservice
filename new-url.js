@@ -12,7 +12,7 @@ MongoClient.connect(url, function(err, db){
     db.close();
   } 
   
-  if(db){
+  if(db && newUrl){
     var collection = db.collection('testCollection');
     var testObj = {
       lookup: 1,

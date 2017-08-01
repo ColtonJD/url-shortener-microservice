@@ -19,8 +19,8 @@ app.get("/", function (request, response) {
 });
 
 app.get('/new/:url', function (req, res){
-  var url = req.params.url;
-  newUrl(url);
+  var newUrl = req.params.url;
+  newUrl(newUrl);
 });
 
 app.get('/id/:id', function (req, res){
