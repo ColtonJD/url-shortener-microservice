@@ -1,3 +1,4 @@
+//Simple DB Conncetion Test Using url from config.js
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var url = require('./config.js');

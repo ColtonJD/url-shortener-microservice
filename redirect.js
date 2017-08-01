@@ -1,3 +1,4 @@
+//Reference newUrl.js for handling
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var url = require('./config.js');

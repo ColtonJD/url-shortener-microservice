@@ -1,15 +1,12 @@
 // server.js
-// where your node app starts
 
 // init project
 var express = require('express');
 var app = express();
 var newUrl = require('./newUrl.js');
+//For creating new shortened URLs
 var redirect = require('./redirect.js');
-var test = require('./test.js');
-
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+//For redirecting shortened URLs
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -20,13 +17,9 @@ app.get("/", function (request, response) {
 });
 
 app.get('/new/:input', function (req, res){
+  //Need to create either an interface that validates URLs and cleans them or a way to clean URLs
   var input = req.params.input;
   var result = newUrl(input);
-  res.end(result);
-});
-
-app.get('/test', function (req, res){
-  var result = test("Working?");
   res.end(result);
 });
 
