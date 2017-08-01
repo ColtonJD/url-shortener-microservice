@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
-var newUrl = require('./new-url.js');
+var newUrl = require('./newUrl.js');
 var redirect = require('./redirect.js');
 
 // we've started you off with Express, 
@@ -20,7 +20,8 @@ app.get("/", function (request, response) {
 
 app.get('/new/:url', function (req, res){
   var newUrl = req.params.url;
-  newUrl(newUrl);
+  console.log(newUrl);
+  res.end(newUrl);
 });
 
 app.get('/id/:id', function (req, res){
