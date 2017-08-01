@@ -2,9 +2,8 @@
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
-
   "name": "my-glitch-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "What am I about?",
   "main": "server.js",
   "scripts": {
@@ -24,5 +23,7 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {},
+  "author": "Colton Dale"
 }

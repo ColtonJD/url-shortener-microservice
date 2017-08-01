@@ -16,22 +16,15 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
+app.get('/new/:url', function (req, res){
+  var url = req.params.url;
+  res.end(url);
 });
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
+app.get('/id/:id', function (req, res){
+  var id = req.params.id;
+  res.end(id);
 });
-
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
