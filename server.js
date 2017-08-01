@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var newUrl = require('./newUrl.js');
 var redirect = require('./redirect.js');
+var test = require('./test.js');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -18,10 +19,15 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/new/:url', function (req, res){
-  var newUrl = req.params.url;
-  console.log(newUrl);
-  res.end(newUrl);
+app.get('/new/:input', function (req, res){
+  var input = req.params.input;
+  var result = newUrl(input);
+  res.end(result);
+});
+
+app.get('/test', function (req, res){
+  var result = test("Working?");
+  res.end(result);
 });
 
 app.get('/id/:id', function (req, res){
