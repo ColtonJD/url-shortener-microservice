@@ -2,6 +2,10 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var url = require('./config.js');
 
+var newUrl = function(newUrl){
+  return newUrl;
+}
+
 MongoClient.connect(url, function(err, db){
   if(err){
     console.log('Unable to connect to Database');
@@ -11,8 +15,8 @@ MongoClient.connect(url, function(err, db){
   if(db){
     var collection = db.collection('testCollection');
     var testObj = {
-      name: 'test3',
-      url: 'test4',
+      lookup: 1,
+      url: newUrl,
     }
     collection.insert(testObj, function(err, data){
       if(err){

@@ -4,6 +4,8 @@
 // init project
 var express = require('express');
 var app = express();
+var newUrl = require('./new-url.js');
+var redirect = require('./redirect.js');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -18,12 +20,12 @@ app.get("/", function (request, response) {
 
 app.get('/new/:url', function (req, res){
   var url = req.params.url;
-  res.end(url);
+  newUrl(url);
 });
 
 app.get('/id/:id', function (req, res){
   var id = req.params.id;
-  res.end(id);
+  redirect(id);
 });
 
 // listen for requests :)
