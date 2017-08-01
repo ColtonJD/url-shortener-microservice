@@ -1,7 +1,6 @@
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var credentials = require('./credentials.js');
-var url = credentials();
+var url = require('./config.js');
 
 MongoClient.connect(url, function(err, db){
   if(err){
