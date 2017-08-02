@@ -1,4 +1,4 @@
-var redirect = function(){
+var redirect = function(input){
   var mongodb = require('mongodb');
   var MongoClient = mongodb.MongoClient;
   var url = require('./config.js');
@@ -10,11 +10,14 @@ var redirect = function(){
       return err;
     } else{
       console.log('working');
-      var target;
       db.collection('testCollection', function(err, collection){
-        collection.find({_id: "HJG81OyD-"}, {_id: 0, url: 1}, function(err, data){}).limit(1);
+        if(err){return err}
+        collection.find({_id: input}, {_id: 0, url: 1}).limit(1).toArray(function (err, data){
+          var obj = data[0];
+          var target = obj.url;
+          return target;
+        });
       });
-      console.log(target);
     }
     db.close();
   });
