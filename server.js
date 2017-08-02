@@ -17,13 +17,16 @@ app.get("/", function (request, response) {
 });
 
 app.get('/new/:input', function (req, res){
+  //Create new shortened URL
   //Need to create either an interface that validates URLs and cleans them or a way to clean URLs
+  //Consider blowing this up and replacing w/ a form on home page. 
   var input = req.params.input;
   var result = newUrl(input);
   res.end(result);
 });
 
 app.get('/id/:id', function (req, res){
+  //Redirect using shortened URl
   var id = req.params.id;
   redirect(id);
 });
