@@ -1,4 +1,4 @@
-//Reference newUrl.js for handling
+var redirect = function(lookup){
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var url = require('./config.js');
@@ -19,3 +19,4 @@ MongoClient.connect(url, function(err, db){
   // Close Connection
   db.close();
 });
+}

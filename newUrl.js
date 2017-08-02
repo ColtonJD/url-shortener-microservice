@@ -1,4 +1,5 @@
 var newUrl = function(input){
+  var shortId = require('shortid');
   var mongodb = require('mongodb');
   var MongoClient = mongodb.MongoClient;
   var url = require('./config.js');
@@ -17,8 +18,8 @@ var newUrl = function(input){
       
       //Need to add technique for maining unique lookup IDs
       var testObj = {
-        lookup: 1,
-        url: input,
+        _id: shortId.generate(),
+        url: input
       }
       //Change lookup: to store unique lookupid
       
