@@ -27,9 +27,7 @@ app.get('/new/:input', function (req, res){
 
 app.get('/id/:id', function (req, res){
   //Redirect using shortened URl
-  var test = req.params.id;
-  var target = redirect();
-  res.end(target);
+  res.end(redirect(req.params.id));
 });
 
 // listen for requests :)

@@ -12,18 +12,17 @@ var redirect = function(input){
       console.log('working');
       db.collection('testCollection', function(err, collection){
         if(err){return err}
-        collection.find({_id: input}, {_id: 0, url: 1}).limit(1).toArray(function (err, data){
+        collection.find({_id: 'HJG81OyD-'}, {_id: 0, url: 1}).limit(1).toArray(function (err, data){
           var obj = data[0];
           var target = obj.url;
-          return target;
+          console.log(target);
         });
       });
     }
     db.close();
   });
 }
-
-redirect();
+module.exports = redirect;
 
 
 
