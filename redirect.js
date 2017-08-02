@@ -9,11 +9,12 @@ var redirect = function(){
       console.log('Unable to connect to Database');
       db.close();
     } else{
+      var target = '';
       console.log('working');
-      var record = db.collection('testCollection').find({url: 'test'}, function(err, data){
-                                                        if(err){console.log('broken'); }
-                                                        }).toArray();
-      console.log(record);
+      db.collection('testCollection').find({_id: "HJG81OyD-"}).toArray(function(err, data){
+                                                        if(err){console.log('broken')}
+                                                          target = data[url];
+                                                        });
       db.close();
     }
   });
