@@ -10,10 +10,11 @@ var redirect = function(){
       return err;
     } else{
       console.log('working');
-      var target = db.collection('testCollection').find({_id: "HJG81OyD-"}, {_id: 0, url: 1}).toString(function(err, data){
-        if(err){return err}
-        console.log(data);
+      var target;
+      db.collection('testCollection', function(err, collection){
+        collection.find({_id: "HJG81OyD-"}, {_id: 0, url: 1}, function(err, data){}).limit(1);
       });
+      console.log(target);
     }
     db.close();
   });
