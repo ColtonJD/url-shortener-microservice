@@ -16,7 +16,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/new/:input', function (req, res){
+app.get('/new/:urlToShorten', function (req, res){
   //Create new shortened URL
   //Need to create either an interface that validates URLs and cleans them or a way to clean URLs
   //Consider blowing this up and replacing w/ a form on home page. 
