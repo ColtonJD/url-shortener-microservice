@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //Standard Record Format 
 const schema = new mongoose.Schema({
-  originalUrl: String,
+  url: String,
   short: String
 });
 

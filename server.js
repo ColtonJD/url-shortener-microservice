@@ -24,7 +24,7 @@ app.get('/new/:urlToShorten', (req, res, next)=>{
   const validUrlTest =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
   if(validUrlTest.test(urlToShorten) === true){
     const insertObj = new shortUrl({
-      originalUrl: urlToShorten,
+      url: urlToShorten,
       short: shortid.generate()
     });
     insertObj.save((err)=>{
@@ -42,21 +42,23 @@ app.get('/new/:urlToShorten', (req, res, next)=>{
 });
 
 app.get('/:shortForRedirect', (req, res, next)=>{
-  const { shortForRedirect } = req.params;
+  const shortForRedirect = req.params.shortForRedirect;
   shortUrl.findOne({short: shortForRedirect}, (err, data) =>{
-    const redirectLocation = data[url];
     if(err){
       throw(err);
       console.log(err);
       res.end('Could not locate short URL. Please check that you submitted the correct URL')
-    }else{
+    }
+    if(data){
       //Reg Ex to test for url containing "http://" || "http://". Without it, express will try to just redirect to local folders 
       const prefixTest = new RegExp("^(http|https)://", 'i');
-      if(prefixTest.test(redirectLocation)){
-        res.redirect(301, redirectLocation)
+      if(prefixTest.test(data.url)){
+        res.redirect(301, data.url)
       }else{
         res.redirect(301, 'http://' + data.url);
       }
+    } else{
+      res.end('Could Not Locate Short ID');
     }
   });
 });
