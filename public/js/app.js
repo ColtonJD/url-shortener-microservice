@@ -1,5 +1,5 @@
 var app = angular.module('shortUrlApp', []);
 
-app.controller('passUrl', ($scope)=>{
+app.controller('shortAppCtrl', ($scope) => {
   
 });

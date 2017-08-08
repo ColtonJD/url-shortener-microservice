@@ -4,6 +4,7 @@
   "description": "Simple url shortener when copying and pasting simply is not an option",
   "main": "server.js",
   "dependencies": {
+    "express": "^4.15.4",
     "mongoose": "^4.11.5",
     "shortid": "^2.2.8"
   },
