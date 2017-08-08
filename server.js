@@ -37,19 +37,25 @@ app.get('/new/:urlToShorten', (req, res, next)=>{
       }
     });
   }else{
-    res.end(urlToShorten + 'is not a valid URL. Please return to home and try again.')
+    res.end(urlToShorten + ' is not a valid URL. Please return to home and try again.')
   }
 });
 
 app.get('/:shortForRedirect', (req, res, next)=>{
   const { shortForRedirect } = req.params;
   shortUrl.findOne({short: shortForRedirect}, (err, data) =>{
-    //Reg Ex to test for url containing "http://" || "http://". Without it, express will try to just redirect to local folders 
-    const prefixTest = new RegExp("^(http|https)://", 'i');
-    if(prefixTest.test(data.url)){
-      res.redirect(301, data.url)
+    if(err){
+      throw(err);
+      console.log(err);
+      res.end('Could not locate short URL. Please check that you submitted the correct URL')
     }else{
-      res.redirect(301, 'http://' + data.url);
+      //Reg Ex to test for url containing "http://" || "http://". Without it, express will try to just redirect to local folders 
+      const prefixTest = new RegExp("^(http|https)://", 'i');
+      if(prefixTest.test(data.url)){
+        res.redirect(301, data.url)
+      }else{
+        res.redirect(301, 'http://' + data.url);
+      }
     }
   });
 });
