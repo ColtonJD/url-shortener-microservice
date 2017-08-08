@@ -45,8 +45,8 @@ app.get('/:shortForRedirect', (req, res, next)=>{
   const { shortForRedirect } = req.params;
   shortUrl.findOne({short: shortForRedirect}, (err, data) =>{
     //Reg Ex to test for url containing "http://" || "http://". Without it, express will try to just redirect to local folders 
-    const urlPrefixTest = new RegExp("^(http|https)://", 'i');
-    if(urlPrefixTest.test(data.url)){
+    const prefixTest = new RegExp("^(http|https)://", 'i');
+    if(prefixTest.test(data.url)){
       res.redirect(301, data.url)
     }else{
       res.redirect(301, 'http://' + data.url);
